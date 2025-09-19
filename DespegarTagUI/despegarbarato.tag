@@ -1,10 +1,9 @@
 // tagui despegarbarato.tag in/search.csv
-
-searchInputOriginXPath = '//*[@id="searchbox-v2"]/div/div/div/div/div/div/div[2]/div[1]/div[1]/div[1]/div[1]/div/div[1]/div'
-selectInputOriginXPath = '//*[@id="ac-wrapper-container"]/div/div/div/ul/li'
-searchInputDestinyXPath = '//*[@id="searchbox-v2"]/div/div/div/div/div/div/div[2]/div[1]/div[1]/div[1]/div[1]/div/div[2]/div'
-selectInputDestinyXPath = '//*[@id="ac-wrapper-container"]/div/div/div/ul/li'
-searchBtnXPath = '//*[@id="searchbox-v2"]/div/div/div/div/div/div/div[2]/div[2]/button'
+searchInputOriginXPath = '/html/body/app-root/div/div[1]/meta-component/div/div/sbox/div/div/searchbox-v2/div/div/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div/input'
+selectInputOriginXPath = '//li[contains(@class,"item") and contains(@class,"-active")]'
+searchInputDestinyXPath = '//input[@aria-label="Ingresá hacia dónde viajas"]'
+selectInputDestinyXPath = '//li[contains(@class,"item") and contains(@class,"-active")]'
+searchBtnXPath = '//button[contains(@class,"sbox5-button")]'
 firstElementResult = '//*[@id="FlightsOffersModule-1"]'
 
 echo Iteration: `iteration`
@@ -16,19 +15,23 @@ if iteration equals to 1
     https://www.despegar.com.ar/
 
     // Maximize Chrome window
-    click in/maximizeBtn.png
+    //keyboard [f11]
 
 echo Searching for: `origin`
 
 // Clear and type the origin location
-type `searchInputOriginXPath` as [clear]`origin`
-// Click the first origin
-click `selectInputOriginXPath`
+click `searchInputOriginXPath`
+type `searchInputOriginXPath` as [clear]`origin`[enter]
+keyboard [space]
+
+
 
 // Clear and type the destiny location
-type `searchInputDestinyXPath` as [clear]`destiny`
-// Click the first destiny
-click `selectInputDestinyXPath`
+//click `searchInputDestinyXPath`
+//type `searchInputDestinyXPath` as [clear]`destiny`[enter]
+//keyboard [space]
+
+
 
 // Click the search button
 click `searchBtnXPath`
@@ -36,4 +39,4 @@ click `searchBtnXPath`
 // Wait for search results to load
 wait 3
 
-tagui vuelos.tag
+
