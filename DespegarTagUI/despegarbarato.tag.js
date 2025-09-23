@@ -1949,6 +1949,12 @@ phantom.onError = function(msg, trace) {if (msg.indexOf('Error:') !== -1) { // c
 msg = msg.substring(msg.indexOf('Error:')+6).trim(); msg = msg.charAt(0).toLowerCase() + msg.slice(1);}
 casper.echo('ERROR - ' + msg).exit();}
 
+// define repository and datatable variables
+var iteration = '1';
+var origin = 'Cordoba';
+var destiny = 'Salta';
+var output_folder = 'Cordoba-Salta';
+
 // flow path for save_text and snap_image
 var flow_path = 'C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI';
 
@@ -1958,11 +1964,241 @@ if (download_path.indexOf(':')>0) download_path = download_path.replace(/\//g,'\
 chrome_step('Page.setDownloadBehavior',{behavior: 'allow', downloadPath: download_path});
 });
 
+//Para ejecutar este script se debe ingresar en la terminal el comando
+//tagui despegarbarato.tag in/search.csv
+//xpath de los elementos a utilizar
+//Xpath del boton origen
+casper.then(function() {{techo('py import requests\nimport json\nimport os # This is a built-in Python library for interacting with the operating system\n# Define la URL del webhook de Discord\nwebhook_url = "https://discord.com/api/webhooks/1420131501483491501/z-Hdgn5SIQ-4id5jkWvKb98r2-RxKyiOobjE0X7uc441p3MkwR4PPk13mJN2Gyu6-DPh"\n# Define las rutas de los archivos de imagen\nfile_path = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\TablaPrecios.png"\npath_vuelo1 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo1.png"\npath_vuelo2 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo2.png"\npath_vuelo3 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo3.png"\n# Define el contenido JSON para el mensaje\npayload_data = {\n    "content": "Tabla de precios de vuelos Cordoba - Salta"\n}\n# Prepara el diccionario de archivos\n# La clave (e.g., "file1") no es importante, pero debe ser única para cada archivo\nfiles = {\n    "file1": (os.path.basename(file_path), open(file_path, "rb"), "image/png"),\n    "file2": (os.path.basename(path_vuelo1), open(path_vuelo1, "rb"), "image/png"),\n    "file3": (os.path.basename(path_vuelo2), open(path_vuelo2, "rb"), "image/png"),\n    "file4": (os.path.basename(path_vuelo3), open(path_vuelo3, "rb"), "image/png")\n}\n# Prepara el payload JSON\ndata = {\n    "payload_json": (None, json.dumps(payload_data), "application/json")\n}\ntry:\n    # Envía la solicitud POST al webhook\n    response = requests.post(webhook_url, data=data, files=files)\n    # Revisa el estado de la respuesta\n    if response.status_code == 204:\n        print("Archivos subidos exitosamente a Discord.")\n    else:\n        print(f"Error al subir los archivos. Código de estado: {response.status_code}")\n        print(response.text)\nfinally:\n    # Es crucial cerrar todos los archivos abiertos para liberar los recursos\n    for file_tuple in files.values():\n        file_object = file_tuple[1]\n        file_object.close()');
+py_result = ''; if (!py_step('py import requests\nimport json\nimport os # This is a built-in Python library for interacting with the operating system\n# Define la URL del webhook de Discord\nwebhook_url = "https://discord.com/api/webhooks/1420131501483491501/z-Hdgn5SIQ-4id5jkWvKb98r2-RxKyiOobjE0X7uc441p3MkwR4PPk13mJN2Gyu6-DPh"\n# Define las rutas de los archivos de imagen\nfile_path = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\TablaPrecios.png"\npath_vuelo1 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo1.png"\npath_vuelo2 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo2.png"\npath_vuelo3 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo3.png"\n# Define el contenido JSON para el mensaje\npayload_data = {\n    "content": "Tabla de precios de vuelos Cordoba - Salta"\n}\n# Prepara el diccionario de archivos\n# La clave (e.g., "file1") no es importante, pero debe ser única para cada archivo\nfiles = {\n    "file1": (os.path.basename(file_path), open(file_path, "rb"), "image/png"),\n    "file2": (os.path.basename(path_vuelo1), open(path_vuelo1, "rb"), "image/png"),\n    "file3": (os.path.basename(path_vuelo2), open(path_vuelo2, "rb"), "image/png"),\n    "file4": (os.path.basename(path_vuelo3), open(path_vuelo3, "rb"), "image/png")\n}\n# Prepara el payload JSON\ndata = {\n    "payload_json": (None, json.dumps(payload_data), "application/json")\n}\ntry:\n    # Envía la solicitud POST al webhook\n    response = requests.post(webhook_url, data=data, files=files)\n    # Revisa el estado de la respuesta\n    if response.status_code == 204:\n        print("Archivos subidos exitosamente a Discord.")\n    else:\n        print(f"Error al subir los archivos. Código de estado: {response.status_code}")\n        print(response.text)\nfinally:\n    # Es crucial cerrar todos los archivos abiertos para liberar los recursos\n    for file_tuple in files.values():\n        file_object = file_tuple[1]\n        file_object.close()'))
+this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
+py_result = fetch_py_text(); clear_py_text();
+try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
+
+casper.then(function() { // start of JS code
+buttonOrigin='/html/body/div[1]/div/div/div[1]/div[1]/div/div/div/div/div/div/form/div[2]/div/div[1]/div[1]/div[2]/div[1]'
+}); // end of JS code
+
+//xpath del input de origen
+casper.then(function() { // start of JS code
+searchInputOriginXPath = '//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/input'
+}); // end of JS code
+
+//xpath del primer resultado del dropdown de origenes
+casper.then(function() { // start of JS code
+selectInputOptionOrigin = '/html/body/div[2]/div/div/div[1]/div[1]/div/div/div/div/div/div/form/div[2]/div/div[1]/div[1]/div[2]/div[3]/span/span/ul/li[1]/div[2]'
+}); // end of JS code
+
+//xpath del input de destino
+casper.then(function() { // start of JS code
+searchInputDestinyXPath = '//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[3]/div[2]/div[2]/div/input'
+}); // end of JS code
+
+//xpath del primer resultado del dropdown de destinos
+casper.then(function() { // start of JS code
+selectInputOptionDestiny = '//*[@id="autocomplete-open"]/span/span/ul/li[1]/div[2]'
+}); // end of JS code
+
+//xpath del boton destino
+casper.then(function() { // start of JS code
+buttonDestiny='//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[3]/div[2]/div[1]'
+}); // end of JS code
+
+//xpath del boton buscar
+casper.then(function() { // start of JS code
+searchBtnXPath ='//*[@id="home-tab-container"]/form/div[2]/div/div[4]/button'
+}); // end of JS code
+
+//xpath del boton de solo ida
+casper.then(function() { // start of JS code
+onlyWayButton='//*[@id="tt2"]'
+}); // end of JS code
+
+//xpath del selector de fechas
+casper.then(function() { // start of JS code
+selectDatesXPath = '//*[@id="home-tab-container"]/form/div[3]/div[2]/div'
+}); // end of JS code
+
+casper.then(function() {this.echo('Iteration: 1');});
+
+// Open Site
+casper.thenOpen('about:blank', function() {
+if (download_path == '') download_path = flow_path; // below to set path correctly for Windows
+if (download_path.indexOf(':')>0) download_path = download_path.replace(/\//g,'\\').replace(/\\/g,'\\');
+chrome_step('Page.setDownloadBehavior',{behavior: 'allow', downloadPath: download_path});
+chrome_step('Page.navigate',{url: 'https://www.turismocity.com.ar/'}); sleep(1000);
+techo('https://www.turismocity.com.ar/' + ' - ' + chrome.getTitle());});
+
+casper.then(function() {techo('wait 5');});
+casper.then(function() {casper.wait(5000, function() {});});
+
+casper.then(function() {if ((iteration == 1))
+{ // start of code block
+
+// Crear la carpeta out si no existe
+//run cmd /c "mkdir out"
+//keyboard [f11]
+} // end of code block
+});
+
+casper.then(function() {this.echo('Searching for: Cordoba');});
+
+//Clicker el boton de solo ida
+casper.then(function() {{techo('click '+onlyWayButton+'');
+casper.waitFor(function check() {return check_tx(''+onlyWayButton+'');},
+function then() {chrome.click(tx(''+onlyWayButton+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+onlyWayButton+'').exit(); this.wait(0);});}});
+
+//Clickear el boton de solo ida
+casper.then(function() {{techo('click '+selectDatesXPath+'');
+casper.waitFor(function check() {return check_tx(''+selectDatesXPath+'');},
+function then() {chrome.click(tx(''+selectDatesXPath+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+selectDatesXPath+'').exit(); this.wait(0);});}});
+
+// Clicker el campo origen
+casper.then(function() {{techo('click '+buttonOrigin+'');
+casper.waitFor(function check() {return check_tx(''+buttonOrigin+'');},
+function then() {chrome.click(tx(''+buttonOrigin+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+buttonOrigin+'').exit(); this.wait(0);});}});
+
+// Escribir el origen
+casper.then(function() {{techo('type '+searchInputOriginXPath+' as [clear]Cordoba');
+casper.waitFor(function check() {return check_tx(''+searchInputOriginXPath+'');},
+function then() {chrome.sendKeys(tx(''+searchInputOriginXPath+''),'',{reset: true});
+chrome.sendKeys(tx(''+searchInputOriginXPath+''),'Cordoba');},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+searchInputOriginXPath+'').exit(); this.wait(0);});}});
+
+//esperar que cargue el dropdown de origenes
+casper.then(function() {techo('wait 3');});
+casper.then(function() {casper.wait(3000, function() {});});
+
+//Seleccionar el primer resultado del dropdown
+casper.then(function() {{techo('click '+selectInputOptionOrigin+'');
+casper.waitFor(function check() {return check_tx(''+selectInputOptionOrigin+'');},
+function then() {chrome.click(tx(''+selectInputOptionOrigin+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+selectInputOptionOrigin+'').exit(); this.wait(0);});}});
+
+// Clicker el campo destino
+casper.then(function() {{techo('click '+buttonDestiny+'');
+casper.waitFor(function check() {return check_tx(''+buttonDestiny+'');},
+function then() {chrome.click(tx(''+buttonDestiny+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+buttonDestiny+'').exit(); this.wait(0);});}});
+
+// Escribir el destino
+casper.then(function() {{techo('type '+searchInputDestinyXPath+' as [clear]Salta');
+casper.waitFor(function check() {return check_tx(''+searchInputDestinyXPath+'');},
+function then() {chrome.sendKeys(tx(''+searchInputDestinyXPath+''),'',{reset: true});
+chrome.sendKeys(tx(''+searchInputDestinyXPath+''),'Salta');},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+searchInputDestinyXPath+'').exit(); this.wait(0);});}});
+
+//esperar que cargue el dropdown de destinos
+casper.then(function() {techo('wait 5');});
+casper.then(function() {casper.wait(5000, function() {});});
+
+//seleccionar el primer resultado del dropdown
+casper.then(function() {{techo('click '+selectInputOptionDestiny+'');
+casper.waitFor(function check() {return check_tx(''+selectInputOptionDestiny+'');},
+function then() {chrome.click(tx(''+selectInputOptionDestiny+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+selectInputOptionDestiny+'').exit(); this.wait(0);});}});
+
+// Click al boton buscar
+casper.then(function() {{techo('click '+searchBtnXPath+'');
+casper.waitFor(function check() {return check_tx(''+searchBtnXPath+'');},
+function then() {chrome.click(tx(''+searchBtnXPath+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+searchBtnXPath+'').exit(); this.wait(0);});}});
+
+// Esperar que cargue la pagina de resultados
+casper.then(function() {techo('wait 3');});
+casper.then(function() {casper.wait(3000, function() {});});
+
+//Aqui se procesan los resultados
+// Create a timestamp for the screenshot filename
+casper.then(function() { // start of JS code
+tablaPrecioMeses='//*[@id="priceBarChart"]'
+}); // end of JS code
+
+//xpath de los 3 vuelos mas baratos
+//xpath del vuelo mas barato
+casper.then(function() { // start of JS code
+vuelo1='//*[@id="VuelosBaratos"]/div[2]/div[2]/div[4]/div/div[2]/div[2]/div/table/tbody/tr[1]'
+}); // end of JS code
+
+//xpath del segundo vuelo mas barato
+casper.then(function() { // start of JS code
+vuelo2='//*[@id="VuelosBaratos"]/div[2]/div[2]/div[4]/div/div[2]/div[2]/div/table/tbody/tr[2]]'
+}); // end of JS code
+
+//xpath del tercer vuelo mas barato
+casper.then(function() { // start of JS code
+vuelo3='//*[@id="VuelosBaratos"]/div[2]/div[2]/div[4]/div/div[2]/div[2]/div/table/tbody/tr[3]'
+}); // end of JS code
+
+//Toma captura de la tabla de precios segun los meses y de los 3 vuelos mas baratos
+casper.then(function() {{techo('snap '+tablaPrecioMeses+' to out/Cordoba-Salta/TablaPrecios.png');
+casper.waitFor(function check() {return check_tx(''+tablaPrecioMeses+'');},
+function then() {chrome.captureSelector('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/out/Cordoba-Salta/TablaPrecios.png',tx(''+tablaPrecioMeses+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+tablaPrecioMeses+'').exit(); this.wait(0);});}});
+
+casper.then(function() {techo('wait 2');});
+casper.then(function() {casper.wait(2000, function() {});});
+
+casper.then(function() {{techo('snap '+vuelo1+' to out/Cordoba-Salta/Vuelo1.png');
+casper.waitFor(function check() {return check_tx(''+vuelo1+'');},
+function then() {chrome.captureSelector('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/out/Cordoba-Salta/Vuelo1.png',tx(''+vuelo1+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+vuelo1+'').exit(); this.wait(0);});}});
+
+casper.then(function() {techo('wait 2');});
+casper.then(function() {casper.wait(2000, function() {});});
+
+casper.then(function() {{techo('snap '+vuelo2+' to out/Cordoba-Salta/Vuelo2-'+timestamp+'.png');
+casper.waitFor(function check() {return check_tx(''+vuelo2+'');},
+function then() {chrome.captureSelector(''+abs_file('out/Cordoba-Salta/Vuelo2-'+timestamp+'.png')+'',tx(''+vuelo2+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+vuelo2+'').exit(); this.wait(0);});}});
+
+casper.then(function() {techo('wait 2');});
+casper.then(function() {casper.wait(2000, function() {});});
+
+casper.then(function() {{techo('snap '+vuelo3+' to out/Cordoba-Salta/Vuelo3-'+timestamp+'.png');
+casper.waitFor(function check() {return check_tx(''+vuelo3+'');},
+function then() {chrome.captureSelector(''+abs_file('out/Cordoba-Salta/Vuelo3-'+timestamp+'.png')+'',tx(''+vuelo3+''));},
+function timeout() {chrome.capture('C:/Users/Emma/AutomatizacionTP2RPA/DespegarTagUI/despegarbarato_error.png');
+this.echo('ERROR - cannot find '+vuelo3+'').exit(); this.wait(0);});}});
+
+//Aqui se envia la tabla de precios a discord
+casper.then(function() {if ((iteration == 1))
+{ // start of code block
+
+casper.then(function() {{techo('py import requests\nimport json\nimport os # This is a built-in Python library for interacting with the operating system\n# Define la URL del webhook de Discord\nwebhook_url = "https://discord.com/api/webhooks/1420131501483491501/z-Hdgn5SIQ-4id5jkWvKb98r2-RxKyiOobjE0X7uc441p3MkwR4PPk13mJN2Gyu6-DPh"\n# Define las rutas de los archivos de imagen\nfile_path = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\TablaPrecios.png"\npath_vuelo1 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo1.png"\npath_vuelo2 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo2.png"\npath_vuelo3 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo3.png"\n# Define el contenido JSON para el mensaje\npayload_data = {\n    "content": "Tabla de precios de vuelos Cordoba - Salta"\n}\n# Prepara el diccionario de archivos\n# La clave (e.g., "file1") no es importante, pero debe ser única para cada archivo\nfiles = {\n    "file1": (os.path.basename(file_path), open(file_path, "rb"), "image/png"),\n    "file2": (os.path.basename(path_vuelo1), open(path_vuelo1, "rb"), "image/png"),\n    "file3": (os.path.basename(path_vuelo2), open(path_vuelo2, "rb"), "image/png"),\n    "file4": (os.path.basename(path_vuelo3), open(path_vuelo3, "rb"), "image/png")\n}\n# Prepara el payload JSON\ndata = {\n    "payload_json": (None, json.dumps(payload_data), "application/json")\n}\ntry:\n    # Envía la solicitud POST al webhook\n    response = requests.post(webhook_url, data=data, files=files)\n    # Revisa el estado de la respuesta\n    if response.status_code == 204:\n        print("Archivos subidos exitosamente a Discord.")\n    else:\n        print(f"Error al subir los archivos. Código de estado: {response.status_code}")\n        print(response.text)\nfinally:\n    # Es crucial cerrar todos los archivos abiertos para liberar los recursos\n    for file_tuple in files.values():\n        file_object = file_tuple[1]\n        file_object.close()');
+py_result = ''; if (!py_step('py import requests\nimport json\nimport os # This is a built-in Python library for interacting with the operating system\n# Define la URL del webhook de Discord\nwebhook_url = "https://discord.com/api/webhooks/1420131501483491501/z-Hdgn5SIQ-4id5jkWvKb98r2-RxKyiOobjE0X7uc441p3MkwR4PPk13mJN2Gyu6-DPh"\n# Define las rutas de los archivos de imagen\nfile_path = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\TablaPrecios.png"\npath_vuelo1 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo1.png"\npath_vuelo2 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo2.png"\npath_vuelo3 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Cordoba-Salta\\\\Vuelo3.png"\n# Define el contenido JSON para el mensaje\npayload_data = {\n    "content": "Tabla de precios de vuelos Cordoba - Salta"\n}\n# Prepara el diccionario de archivos\n# La clave (e.g., "file1") no es importante, pero debe ser única para cada archivo\nfiles = {\n    "file1": (os.path.basename(file_path), open(file_path, "rb"), "image/png"),\n    "file2": (os.path.basename(path_vuelo1), open(path_vuelo1, "rb"), "image/png"),\n    "file3": (os.path.basename(path_vuelo2), open(path_vuelo2, "rb"), "image/png"),\n    "file4": (os.path.basename(path_vuelo3), open(path_vuelo3, "rb"), "image/png")\n}\n# Prepara el payload JSON\ndata = {\n    "payload_json": (None, json.dumps(payload_data), "application/json")\n}\ntry:\n    # Envía la solicitud POST al webhook\n    response = requests.post(webhook_url, data=data, files=files)\n    # Revisa el estado de la respuesta\n    if response.status_code == 204:\n        print("Archivos subidos exitosamente a Discord.")\n    else:\n        print(f"Error al subir los archivos. Código de estado: {response.status_code}")\n        print(response.text)\nfinally:\n    # Es crucial cerrar todos los archivos abiertos para liberar los recursos\n    for file_tuple in files.values():\n        file_object = file_tuple[1]\n        file_object.close()'))
+this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
+py_result = fetch_py_text(); clear_py_text();
+try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
+
+} // end of code block
+});
+
+casper.then(function() {if ((iteration == 2))
+{ // start of code block
+
 casper.then(function() {{techo('py import requests\nimport json\nimport os # This is a built-in Python library for interacting with the operating system\n# Define la URL del webhook de Discord\nwebhook_url = "https://discord.com/api/webhooks/1420131501483491501/z-Hdgn5SIQ-4id5jkWvKb98r2-RxKyiOobjE0X7uc441p3MkwR4PPk13mJN2Gyu6-DPh"\n# Define las rutas de los archivos de imagen\nfile_path = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\TablaPrecios.png"\npath_vuelo1 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\Vuelo1.png"\npath_vuelo2 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\Vuelo2.png"\npath_vuelo3 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\Vuelo3.png"\n# Define el contenido JSON para el mensaje\npayload_data = {\n    "content": "Tabla de precios de vuelos Ezeiza - Madrid"\n}\n# Prepara el diccionario de archivos\n# La clave (e.g., "file1") no es importante, pero debe ser única para cada archivo\nfiles = {\n    "file1": (os.path.basename(file_path), open(file_path, "rb"), "image/png"),\n    "file2": (os.path.basename(path_vuelo1), open(path_vuelo1, "rb"), "image/png"),\n    "file3": (os.path.basename(path_vuelo2), open(path_vuelo2, "rb"), "image/png"),\n    "file4": (os.path.basename(path_vuelo3), open(path_vuelo3, "rb"), "image/png")\n}\n# Prepara el payload JSON\ndata = {\n    "payload_json": (None, json.dumps(payload_data), "application/json")\n}\ntry:\n    # Envía la solicitud POST al webhook\n    response = requests.post(webhook_url, data=data, files=files)\n    # Revisa el estado de la respuesta\n    if response.status_code == 204:\n        print("Archivos subidos exitosamente a Discord.")\n    else:\n        print(f"Error al subir los archivos. Código de estado: {response.status_code}")\n        print(response.text)\nfinally:\n    # Es crucial cerrar todos los archivos abiertos para liberar los recursos\n    for file_tuple in files.values():\n        file_object = file_tuple[1]\n        file_object.close()');
 py_result = ''; if (!py_step('py import requests\nimport json\nimport os # This is a built-in Python library for interacting with the operating system\n# Define la URL del webhook de Discord\nwebhook_url = "https://discord.com/api/webhooks/1420131501483491501/z-Hdgn5SIQ-4id5jkWvKb98r2-RxKyiOobjE0X7uc441p3MkwR4PPk13mJN2Gyu6-DPh"\n# Define las rutas de los archivos de imagen\nfile_path = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\TablaPrecios.png"\npath_vuelo1 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\Vuelo1.png"\npath_vuelo2 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\Vuelo2.png"\npath_vuelo3 = "C:\\\\Users\\\\Emma\\\\AutomatizacionTP2RPA\\\\DespegarTagUI\\\\out\\\\Ezeiza-Madrid\\\\Vuelo3.png"\n# Define el contenido JSON para el mensaje\npayload_data = {\n    "content": "Tabla de precios de vuelos Ezeiza - Madrid"\n}\n# Prepara el diccionario de archivos\n# La clave (e.g., "file1") no es importante, pero debe ser única para cada archivo\nfiles = {\n    "file1": (os.path.basename(file_path), open(file_path, "rb"), "image/png"),\n    "file2": (os.path.basename(path_vuelo1), open(path_vuelo1, "rb"), "image/png"),\n    "file3": (os.path.basename(path_vuelo2), open(path_vuelo2, "rb"), "image/png"),\n    "file4": (os.path.basename(path_vuelo3), open(path_vuelo3, "rb"), "image/png")\n}\n# Prepara el payload JSON\ndata = {\n    "payload_json": (None, json.dumps(payload_data), "application/json")\n}\ntry:\n    # Envía la solicitud POST al webhook\n    response = requests.post(webhook_url, data=data, files=files)\n    # Revisa el estado de la respuesta\n    if response.status_code == 204:\n        print("Archivos subidos exitosamente a Discord.")\n    else:\n        print(f"Error al subir los archivos. Código de estado: {response.status_code}")\n        print(response.text)\nfinally:\n    # Es crucial cerrar todos los archivos abiertos para liberar los recursos\n    for file_tuple in files.values():\n        file_object = file_tuple[1]\n        file_object.close()'))
 this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
 py_result = fetch_py_text(); clear_py_text();
 try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
+
+} // end of code block
+});
 
 casper.then(function() {if (excel_files.length != 0) excel_close();});
 

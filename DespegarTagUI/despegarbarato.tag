@@ -71,7 +71,7 @@ wait 3
 tagui vuelos.tag
 //Aqui se envia la tabla de precios a discord
 
-//if iteration equals to 1
-//tagui envioCordoba-Salta.tag
-//if iteration equals to 2    
-// tagui envioEzeiza-Madrid.tag
+if iteration equals to 1
+    tagui envioCordoba-Salta.tag
+if iteration equals to 2    
+    tagui envioEzeiza-Madrid.tag
