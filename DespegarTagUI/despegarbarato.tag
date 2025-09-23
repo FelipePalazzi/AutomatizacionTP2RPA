@@ -2,6 +2,9 @@
 //tagui despegarbarato.tag in/search.csv
 //xpath de los elementos a utilizar
 //Xpath del boton origen
+
+tagui envioCordoba-Salta.tag
+
 buttonOrigin='/html/body/div[1]/div/div/div[1]/div[1]/div/div/div/div/div/div/form/div[2]/div/div[1]/div[1]/div[2]/div[1]'
 //xpath del input de origen
 searchInputOriginXPath = '//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/input'
@@ -20,8 +23,11 @@ onlyWayButton='//*[@id="tt2"]'
 //xpath del selector de fechas
 selectDatesXPath = '//*[@id="home-tab-container"]/form/div[3]/div[2]/div'
 
+
+
 echo Iteration: `iteration`
 // Open Site
+
 https://www.turismocity.com.ar/
 wait 5
 if iteration equals to 1
@@ -63,3 +69,9 @@ click `searchBtnXPath`
 wait 3
 //Aqui se procesan los resultados
 tagui vuelos.tag
+//Aqui se envia la tabla de precios a discord
+
+//if iteration equals to 1
+//tagui envioCordoba-Salta.tag
+//if iteration equals to 2    
+// tagui envioEzeiza-Madrid.tag
