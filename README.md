@@ -1,30 +1,28 @@
-# ✈️ Automatización TP2 RPA - TurismoCity con TagUI
+# ✈️ Automation TP2 RPA - TurismoCity with TagUI
 
-Este proyecto corresponde al **Trabajo Práctico de RPA**, donde implementamos un bot utilizando **TagUI** para automatizar la búsqueda de vuelos baratos en la página [Turismo City](https://www.turismocity.com.ar/) y enviar los resultados por **Discord**.
-
----
-
-## 📌 Descripción del Proyecto
-
-La automatización realizada permite:
-
-1. Ingresar automáticamente al sitio web de Turismo City.
-2. Completar los campos de **origen** y **destino** del vuelo.
-3. Realizar la búsqueda de vuelos disponibles.
-4. Capturar una captura de pantalla de los resultados.
-5. Enviar esa captura a un canal de **Discord** mediante un webhook.
-
-De esta manera, logramos integrar **automatización web + notificaciones en tiempo real**, simplificando el proceso de buscar vuelos económicos y recibirlos en nuestro servidor de Discord.
+This project was developed as part of **Practical Assignment #2 for RPA**, where we built a bot using **TagUI** to automate the search for cheap flights on [Turismo City](https://www.turismocity.com.ar/) and send the results to **Discord**.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 📌 Project Description
 
-- [TagUI](https://tagui.readthedocs.io/en/latest/) → Framework de automatización RPA
-- **Python**
-- **Webhook de Discord** → Para recibir notificaciones y la imagen con los resultados.
-- **Turismo City** → Plataforma web sobre la cual se ejecuta la automatización.
+The automation performs the following steps:
+
+1. Automatically accesses the Turismo City website.  
+2. Fills in the **origin** and **destination** fields.  
+3. Searches for available flights.  
+4. Takes a screenshot of the results page.  
+5. Sends that screenshot to a **Discord** channel.  
+
+This way, we combined **web automation + real-time notifications**, making it easier to find cheap flights and instantly receive them in our Discord.
 
 ---
 
-## 📂 Estructura del Proyecto
+## 🛠️ Technologies Used
+
+- [TagUI](https://tagui.readthedocs.io/en/latest/) → RPA automation framework.  
+- **Python**.  
+- **Discord Webhook** → To receive notifications and screenshots.  
+- **Turismo City** → The web platform used for flight search.  
+
+---
