@@ -13,6 +13,6 @@ snap `tablaPrecioMeses` to out/`output folder`/TablaPrecios.png
 wait 2
 snap `vuelo1` to out/`output folder`/Vuelo1.png
 wait 2
-snap `vuelo2` to out/`output folder`/Vuelo2-`timestamp`.png
+snap `vuelo2` to out/`output folder`/Vuelo2.png
 wait 2
-snap `vuelo3` to out/`output folder`/Vuelo3-`timestamp`.png
+snap `vuelo3` to out/`output folder`/Vuelo3.png
