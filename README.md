@@ -26,3 +26,10 @@ This way, we combined **web automation + real-time notifications**, making it ea
 - **Turismo City** → The web platform used for flight search.  
 
 ---
+
+👥 Team Members
+- Emmanuel Davezac  
+- Esteban Gay  
+- Felipe Palazzi  
+- Mauricio Nahuel Salto 
+
