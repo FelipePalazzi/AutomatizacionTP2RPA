@@ -1,25 +1,25 @@
-//Para ejecutar este script se debe ingresar en la terminal el comando
-    //cd .\DespegarTagUI\
-    //tagui despegarbarato.tag in/search.csv
+// To execute this script, you must enter the following command in the terminal:
+// cd .\DespegarTagUI\
+// tagui despegarbarato.tag in/search.csv
 
-//xpath de los elementos a utilizar:
-//Xpath del boton origen
+// XPaths of the elements to be used:
+// Xpath of the origin button
 buttonOrigin='//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[1]/div[2]/div[1]'
-//xpath del input de origen
+// xpath of the origin input field
 searchInputOriginXPath = '//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/input'
-//xpath del primer resultado del dropdown de origenes
+// xpath of the first result in the origin dropdown
 selectInputOptionOrigin = '//*[@id="autocomplete-open"]/span/span/ul/li[1]'
-//xpath del input de destino
+// xpath of the destiny input field
 searchInputDestinyXPath = '//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[3]/div[2]/div[2]/div/input'
-//xpath del primer resultado del dropdown de destinos
+// xpath of the first result in the destiny dropdown
 selectInputOptionDestiny = '//*[@id="autocomplete-open"]/span/span/ul/li[1]/div[2]'
-//xpath del boton destino
+// xpath of the destiny button
 buttonDestiny='//*[@id="home-tab-container"]/form/div[2]/div/div[1]/div[3]/div[2]/div[1]'
-//xpath del boton buscar
+// xpath of the search button
 searchBtnXPath ='//*[@id="home-tab-container"]/form/div[2]/div/div[4]/button'
-//xpath del boton de solo ida
+// xpath of the one-way button
 onlyWayButton='//*[@id="tt2"]'
-//xpath del selector de fechas
+// xpath of the date selector
 selectDatesXPath = '//*[@id="home-tab-container"]/form/div[3]/div[2]/div'
 
 https://www.turismocity.com.ar/
@@ -27,50 +27,50 @@ wait 5
 echo Iteration: `iteration`
 if iteration equals to 1
     keyboard [f11]
-    //run cmd /c "mkdir out"
+    // run cmd /c "mkdir out"
     // Open Site
 
 echo Searching for: `origin`
-//Clicker el boton de solo ida
+// Click the one-way button
 click `onlyWayButton`
-//Clickear el boton de solo ida
+// Click the date selector
 click `selectDatesXPath`
 
 
-// Clicker el campo origen
+// Click the origin field
 click `buttonOrigin`
-// Escribir el origen
+// Type the origin
 type `searchInputOriginXPath` as [clear]`origin`
-//esperar que cargue el dropdown de origenes
+// Wait for the origin dropdown to load
 wait 1
-//Seleccionar el primer resultado del dropdown
+// Select the first result from the dropdown
 click `selectInputOptionOrigin`
 
 
-// Clicker el campo destino
+// Click the destiny field
 click `buttonDestiny`
-// Escribir el destino
+// Type the destiny
 type `searchInputDestinyXPath` as [clear]`destiny`
-//esperar que cargue el dropdown de destinos
+// Wait for the destiny dropdown to load
 wait 1
-//seleccionar el primer resultado del dropdown
+// Select the first result from the dropdown
 click `selectInputOptionDestiny`
 
-// Click al boton buscar
+// Click the search button
 click `searchBtnXPath`
 
-// Esperar que cargue la pagina de resultados
+// Wait for the results page to load
 wait 3
-//Aqui se procesan los resultados
+// Here the results are processed
 if iteration equals to 1
     tagui vuelos.tag
 
-//Esto se hace para la iteracion 2 ya que es vuelo internacional, por lo que hay un div extra
+// This is done for iteration 2 as it is an international flight, so there is an extra div
 if iteration equals to 2
     tagui vuelosinter.tag
 
-//Aqui se envia la tabla de precios a discord
+// Here the price table is sent to Discord
 if iteration equals to 1
     tagui envioCordoba-Salta.tag
-if iteration equals to 2    
+if iteration equals to 2
     tagui envioEzeiza-Madrid.tag
