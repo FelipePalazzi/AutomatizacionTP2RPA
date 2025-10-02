@@ -33,3 +33,9 @@ This way, we combined **web automation + real-time notifications**, making it ea
 - Felipe Palazzi  
 - Mauricio Nahuel Salto 
 
+---
+
+## 🎥 Demo Video  
+
+You can watch the full demo of the automation running here:  
+👉 [Click to view the video](https://drive.google.com/file/d/1Qb7A0wS_TsMIUit5D3BKSs_kQbrlzku8/view) 
